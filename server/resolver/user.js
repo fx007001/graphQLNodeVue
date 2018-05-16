@@ -20,6 +20,7 @@ var root= {
     if(name){
       users.map((n,i)=>{
         if(n.name == name){
+          userInfo.token = n.token
           userInfo.message = '登录成功！'
         }
       })
@@ -27,14 +28,17 @@ var root= {
     }
   },
   //注册
-  register:function({name,password}){
+  register:function({name,password,pho}){
     let userInfo = {
       name:name,
       password:password,
+      pho:pho,
+      token: 'li834l3256345l34634563465lk',
       message:'注册成功!'
     }
-    console.log(name)
+
    users.push(userInfo)
+    console.log(users)
    return userInfo
   },
   //兴趣标签

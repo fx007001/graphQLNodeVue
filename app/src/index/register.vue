@@ -9,7 +9,7 @@
         <div>用户名：<input type="text" v-model="name" placeholder="输入用户名"></div>
         <div>密&nbsp;&nbsp;&nbsp;码：<input type="password" v-model="password" placeholder="输入密码"></div>
         <div class="subLog"><span @click="register()">注册</span></div>
-        <div>没有账号？去注册</div>
+        <div class="more">没有账号？去 <router-link :to="'/sign'">登录</router-link></div>
       </div>
     </div>
   </div>
@@ -18,10 +18,12 @@
   import Items from './../components/Items.vue'
   import gql from 'graphql-tag'
   var register = gql`
-    mutation register($name:String!, $password:String!){
-      register(name:$name,password:$password){
+    mutation register($pho:String!,$name:String!, $password:String!){
+      register(pho:$pho,name:$name,password:$password){
+        pho
         name
         password
+        token
         message
       }
     }
@@ -30,7 +32,7 @@
     name: 'Index',
     data () {
       return {
-        pho:15116921239,
+        pho:"15116921239",
         name:'admin',
         password:'123456'
       }
@@ -40,12 +42,14 @@
         this.$apollo.mutate({
           mutation:register,
           variables:{
+            pho:this.pho,
             name:this.name,
             password:this.password
           }
          })
           .then((res)=>{
           alert('注册成功！')
+          this.$router.push('/sign')
         })
       }
     }
@@ -87,5 +91,15 @@
     width: 210px;
     line-height: 24px;
     padding: 0 10px;
+  }
+  .registerContent .more{
+    position: relative;
+    bottom: -15px;
+    text-align: right;
+    color:#999;
+    font-size: 14px;
+  }
+  .registerContent .more a{
+    color:#00a4ff;
   }
 </style>

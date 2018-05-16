@@ -1,7 +1,6 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-import Vuex from 'vuex'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -29,8 +28,9 @@ const apolloClient = new ApolloClient({
 const apolloProvider = new VueApollo({
   defaultClient: apolloClient,
 })
+// 在vue中引用VueApollo
+Vue.use(VueApollo)
 
-// Install the vue plugin
 
 /* eslint-disable no-new */
 new Vue({

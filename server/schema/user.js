@@ -42,12 +42,15 @@ var schema = buildSchema(`
         workLeng:String
     }
     type Register{
+      pho:String
       name:String
+      token:String
       password:String
       message:String
     }
     type Signin{
       name:String
+      token:String
       password:String
       message:String
     }
@@ -62,7 +65,7 @@ var schema = buildSchema(`
     }
     
     type Mutation{
-        register(name:String!,password:String!):Register
+        register(pho:String!,name:String!,password:String!):Register
     }
     
 `);

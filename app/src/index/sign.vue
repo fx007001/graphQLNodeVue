@@ -8,7 +8,7 @@
         <div>用户名：<input type="text" v-model="name" placeholder="输入用户名"></div>
         <div>密&nbsp;&nbsp;&nbsp;码：<input type="password" v-model="password" placeholder="输入密码"></div>
         <div class="subLog"><span @click="sign()">登 录</span></div>
-        <div><p>没有账号？去注册</p></div>
+        <div class="more">没有账号？去  <router-link :to="'/register'">注册</router-link></div>
       </div>
     </div>
   </div>
@@ -21,6 +21,7 @@
           signin(name:$name,password:$password){
             name
             message
+            token
           }
         }
       `
@@ -44,7 +45,9 @@
            }
          )
          .then((res)=>{
+           window.localStorage.setItem('user',JSON.stringify(res.data.signin))
            alert(res.data.signin.message)
+           this.$router.push('/')
          })
       }
     }
@@ -86,5 +89,15 @@
     width: 210px;
     line-height: 24px;
     padding: 0 10px;
+  }
+  .signContent .more{
+    color:#999;
+    font-size: 14px;
+    position: relative;
+    bottom: -15px;
+    text-align: right;
+  }
+  .signContent .more a{
+    color:#00a4ff;
   }
 </style>

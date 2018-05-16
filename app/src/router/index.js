@@ -7,7 +7,7 @@ import register from '@/index/register'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -31,3 +31,21 @@ export default new Router({
     }
   ]
 })
+
+
+// 路由权限控制
+router.beforeEach((to, from, next) => {
+  var user = window.localStorage.getItem('user')
+  if(user){
+     next()
+   }else{
+    if(to.path=='/register' || to.path=='/sign'){
+      next();
+    }else{
+      next('/sign');
+      return
+    }
+  }
+})
+
+export default router

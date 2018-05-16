@@ -4,6 +4,7 @@ var dataServer = {
       name: '张老师',
       sex: '男',
       intro: '高级讲师，专注于Web前端:Html5,JavaScript,CSS3',
+      token: 'li834l3256345l34634563465lk',
       skills: ['Html5','JavaScript','nodeJs','CSS3'],
     }
   ],

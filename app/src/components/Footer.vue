@@ -50,6 +50,9 @@
     background: #fff;
     text-align: left;
   }
+  .footer p{
+    margin: 15px 0;
+  }
   .foot{
     width: 80%;
     max-width: 1366px;

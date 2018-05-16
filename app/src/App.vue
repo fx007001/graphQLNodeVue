@@ -14,7 +14,6 @@ export default {
 body,p,ul,li{
   padding: 0px;
   margin: 0px;
-  background: #f3f5f7;
   position: relative;
 }
 #app {

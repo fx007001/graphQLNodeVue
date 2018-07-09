@@ -46,7 +46,7 @@
          )
          .then((res)=>{
            window.localStorage.setItem('user',JSON.stringify(res.data.signin))
-           alert(res.data.signin.message)
+           // alert(res.data.signin.message)
            this.$router.push('/')
          })
       }
